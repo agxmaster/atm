@@ -55,8 +55,14 @@ func Query(ctx context.Context, db *gorm.DB, modelType reflect.Type, clauses cla
 	return res, err
 }
 
-func First(ctx context.Context, db *gorm.DB, model any, id int64) (any, error) {
-	err := db.Model(model).Where("id", id).First(&model).Error
+func First(ctx context.Context, db *gorm.DB, model any, id int64, columns []string) (any, error) {
+
+	db = db.Model(model).Where("id", id)
+
+	if columns != nil {
+		db = clause.Select(columns).Build(db)
+	}
+	err := db.First(&model).Error
 	return model, err
 }
 
