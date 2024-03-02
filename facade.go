@@ -40,9 +40,9 @@ func (m *M) BatchUpdates(ctx context.Context, table string, ids []int64, data cl
 	return db.BatchUpdates(ctx, table, ids, data)
 }
 
-func (m *M) First(ctx context.Context, table string, id int64) (RowsMap, error) {
+func (m *M) First(ctx context.Context, table string, id int64, column []string) (RowsMap, error) {
 	db := &Atm[RowsMap]{Db: m.DB}
-	return db.First(ctx, table, id, nil)
+	return db.First(ctx, table, id, column)
 }
 
 func (m *M) Query(ctx context.Context, table string, clauses clause.Clauses) ([]RowsMap, error) {
