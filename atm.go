@@ -104,8 +104,14 @@ func (gorm *Atm[T]) SBatchUpdates(ctx context.Context, ids []int64, data T) erro
 	return err
 }
 
-func (gorm *Atm[T]) First(ctx context.Context, table string, id int64) (data RowsMap, err error) {
-	err = gorm.Db.Table(table).Where("id", id).Take(&data).Error
+func (gorm *Atm[T]) First(ctx context.Context, table string, id int64, columns clause.Select) (data RowsMap, err error) {
+	db := gorm.Db.Table(table).Where("id", id)
+
+	if columns != nil {
+		db = columns.Build(db)
+	}
+	err = db.Take(&data).Error
+
 	return data, err
 }
 

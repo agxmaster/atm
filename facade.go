@@ -42,7 +42,7 @@ func (m *M) BatchUpdates(ctx context.Context, table string, ids []int64, data cl
 
 func (m *M) First(ctx context.Context, table string, id int64) (RowsMap, error) {
 	db := &Atm[RowsMap]{Db: m.DB}
-	return db.First(ctx, table, id)
+	return db.First(ctx, table, id, nil)
 }
 
 func (m *M) Query(ctx context.Context, table string, clauses clause.Clauses) ([]RowsMap, error) {

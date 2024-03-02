@@ -231,7 +231,7 @@ func TestSBatchUpdates(t *testing.T) {
 
 func TestFirst(t *testing.T) {
 	db := &atm.Atm[atm.RowsMap]{Db: gormdb}
-	res, err := db.First(ctx, TableUser, 69)
+	res, err := db.First(ctx, TableUser, 69, nil)
 	fmt.Printf("%+v \n", res)
 	if err != nil {
 		t.Errorf("First error %+v", err)
