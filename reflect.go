@@ -58,12 +58,12 @@ func Query(ctx context.Context, db *gorm.DB, modelType reflect.Type, clauses cla
 func First(ctx context.Context, db *gorm.DB, model any, id int64, columns []string) (any, error) {
 
 	db = db.Model(model).Where("id", id)
-
+	res := new(map[string]interface{})
 	if columns != nil {
 		db = clause.Select(columns).Build(db)
 	}
-	err := db.First(&model).Error
-	return model, err
+	err := db.Model(model).Take(res).Error
+	return res, err
 }
 
 func QueryPage(ctx context.Context, db *gorm.DB, modelType reflect.Type, clauses clause.Clauses, destStruct bool) (ResultWithPageAny, error) {

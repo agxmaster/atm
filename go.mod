@@ -1,6 +1,6 @@
 module github.com/agxmaster/atm
 
-go 1.21.5
+go 1.18
 
 require (
 	gorm.io/driver/mysql v1.5.2

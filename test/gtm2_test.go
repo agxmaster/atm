@@ -93,7 +93,7 @@ func TestQueryPageFunc(t *testing.T) {
 
 func TestFirstFunc(t *testing.T) {
 	model := reflect.New(r).Interface()
-	data, err := atm.First(ctx, gormdb, model, 41751)
+	data, err := atm.First(ctx, gormdb, model, 1, []string{"id"})
 	fmt.Printf("%+v", data)
 	if err != nil {
 		t.Errorf("TestCreateFunc %+v", err)

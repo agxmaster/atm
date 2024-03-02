@@ -99,8 +99,8 @@ func TestBatchCreate(t *testing.T) {
 			"gender":     100,
 			"age":        100,
 			"class":      "aaa",
-			"created_at": time.DateTime,
-			"updated_at": time.DateTime,
+			"created_at": time.Now(),
+			"updated_at": time.Now(),
 		},
 		{
 			//"id":         nil,
@@ -108,8 +108,8 @@ func TestBatchCreate(t *testing.T) {
 			"gender":     100,
 			"age":        100,
 			"class":      "aaa",
-			"created_at": time.DateTime,
-			"updated_at": time.DateTime,
+			"created_at": time.Now(),
+			"updated_at": time.Now(),
 		},
 	}
 
